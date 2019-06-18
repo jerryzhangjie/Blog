@@ -18,3 +18,49 @@
 
 ## 3. 容器属性
 
+### 1). flex-direction：规定主轴的方向，即项目的排列方向。
+
+`flex-direction: column-reverse | column | row | row-reverse;` 
+
+![flex-direction.png](https://i.loli.net/2019/06/18/5d0835f7e689a17376.png)
+
+### 2). flex-wrap：规定主轴上项目的换行方式。
+
+`flex-wrap: nowrap(不换行) | wrap(换行，第一行在下方) | wrap-reverse(换行，第一行在上方);`
+
+### 3). flex-flow：flex-direction和flex-wrap的简写，默认为row nowrap。
+
+### 4). justify-content：主轴上的对齐方式。
+`justify-content: flex-start | flex-end | center | space-between | space-around;`
+
+![justify-content.png](https://i.loli.net/2019/06/18/5d083820548ac86028.png)
+
+### 5). align-items：交叉轴上的对齐方式。
+`align-items: flex-start | flex-end | center | baseline | stretch;`
+
+![align-items.png](https://i.loli.net/2019/06/18/5d08389bc492477095.png)
+
+### 6). align-content：多根主轴时，它们在交叉轴上的对齐方式。若只有一根主轴，该属性无效。
+`align-content: flex-start | flex-end | center | space-between | space-around | stretch;`
+
+![align-content.png](https://i.loli.net/2019/06/18/5d0839aaa0ae556400.png)
+
+## 4. 项目属性
+### 1). order：项目的排列顺序。数值越小，排列越靠前，默认为0。
+`order: <integer>;`
+
+![屏幕快照 2019-06-18 上午9.13.57.png](https://i.loli.net/2019/06/18/5d083aedd8d4515581.png)
+
+### 2). flex-grow：项目的放大比例，默认为0，即存在剩余空间也不放大。
+`flex-grow: <number>; /* default 0 */`
+
+![flex-grow.png](https://i.loli.net/2019/06/18/5d083b785e8b926074.png)
+均为1时，等分剩余空间；一个为2其它为1，则前者等分的大小是后者的2倍。
+
+### 3). flex-shrink：项目的缩小比例，默认为1，即空间不足时将缩小。
+`flex-shrink: <number>; /* default 1 */`
+
+![flex-shrink.jpg](https://i.loli.net/2019/06/18/5d083c698797265542.jpg)
+数值越大，缩小比例越大，为0时不缩小。
+
+### 4). 
