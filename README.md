@@ -1,6 +1,7 @@
 # KBS
- > :house_with_garden: A project for recording my knowledge base system.
- > 关注基础知识，探求底层原理，积累实战经验。
+ > :house_with_garden: 关注基础知识，探求底层原理，积累实战经验。
+ 
+ > A project for recording my knowledge base system.
 
 ## 1.项目结构解析
 * **思想与理论**：包含计算机相关理论知识、编程模式、开发模式等，偏底层或超上层的东西；
