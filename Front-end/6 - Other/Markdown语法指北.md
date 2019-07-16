@@ -176,6 +176,12 @@ MD文件后缀为 \.md
 ## 11. 其它
 [MD流程图传送带](https://www.jianshu.com/p/b421cc723da5)
 
+## 12. 扩展
+上文提到`MD是将以MD语法编写的文本转换成HTML内容的工具`，其实MD也支持直接书写HTML标签，例如我们可以在MD文件的任意位置嵌入图片：
+
+`<img src="https://i.loli.net/2019/06/07/5cf9ca3930eab48145.jpeg" style=" position: absolute; width: 200px; height: 150px; top: 50px; right: 27px;">`
+
+(通过position定位，可以使html内容不必遵循MD自上而下的排版方式)
 
 # Tool
 `VSCode + Markdown Preview Github Styling` 目前在用
