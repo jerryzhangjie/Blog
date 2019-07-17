@@ -76,3 +76,22 @@
 
 ### 6). align-self：指定该项目在交叉轴的对齐方式，可覆盖容器的`align-item`设置。默认auto，表示继承容器的设置。
 `align-self: auto | flex-start | flex-end | center | baseline | stretch;`
+
+
+# Flex实战示例
+> 场景一：行数不定列数固定(父容器宽度固定)，采用space-between或space-around排布，最后一行元素个数不够时无法局左排布。
+
+    // 解决方法1：利用伪元素after或before设置父元素
+    .father:after{
+        content:"";
+        display:block;
+    }
+    // 通常由于父元素设置space-between后会覆盖子元素的一部分margin值，可调整margin值使子元素间隔一致
+    .son {
+        margin: xx;
+    }
+
+    // 解决方法2：给最后一个子元素设置margin-right
+    .son:last-child {
+        margin-right: auto;
+    }
