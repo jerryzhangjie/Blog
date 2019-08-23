@@ -70,9 +70,10 @@
 设为固定值(如100px)时，项目占据固定空间。
 
 ### 5). flex：是flex-grow、flex-shrink、flex-basis的简写，默认值`0 1 auto`，即不可自动放大、可自动缩小、默认占据本来大小。
-两个快捷值：
-* `flex: auto;`同`flex: 1;`，表示`1 1 auto`，即可自动放大、缩小、默认占据本来大小。
+三个快捷值：
+* `flex: auto;`，表示`1 1 auto`，即可自动放大、可自动缩小、默认占据本来大小。当旁边元素未设置flex时(取默认值0 1 auto)，会被挤压。
 * `flex: none;`，表示`0 0 auto`，即不可自动放大、不可自动缩小、默认占据本来大小。
+* `flex: 1;`，表示`0 0 0%`，即可自动放大、可自动缩小、默认不占据空间。不会挤压旁边元素，适合做等分、自适应。
 
 ### 6). align-self：指定该项目在交叉轴的对齐方式，可覆盖容器的`align-item`设置。默认auto，表示继承容器的设置。
 `align-self: auto | flex-start | flex-end | center | baseline | stretch;`
@@ -94,4 +95,102 @@
     // 解决方法2：给最后一个子元素设置margin-right
     .son:last-child {
         margin-right: auto;
+    }
+
+> 场景二：实现左右宽度固定、中间宽度自适应的散列布局
+
+    <div class="wrapper" style="height: 200px;background: #ccc;">
+      <div class="left" style="height: 100%;width: 300px;background: cadetblue;">这是左栏</div>
+      <div class="center" style="height: 100%;background: chocolate;">
+        这是中栏，且自适应宽度。这是中栏，且自适应宽度。这是中栏，且自适应宽度。
+      </div>
+      <div class="right" style="height: 100%;width: 300px;background: cadetblue;">这是右栏</div>
+    </div>
+
+    <!-- 方法一：flex，使用快捷值auto -->
+    .wrapper {
+      display: flex;
+    }
+    .center {
+      flex: auto; /* 相当于 1 1 auto */
+    }
+    /* flex布局 子元素(项目)默认flex: 0 1 auto; 1表示可缩小，
+    所以希望项目宽度固定时，设置width属性无效，需设置flex属性 */
+    .left, .right {
+      flex: 0 0 300px;
+    }
+
+    <!-- 方法二：flex，使用快捷值1 -->
+    .wrapper {
+      display: flex;
+    }
+    .center {
+      flex: 1; /* 相当于 1 1 0% */
+    }
+    /* flex布局 flex:1 center默认不占据宽度，所以不会挤压left、right的width，
+    此时width属性有效效，不需为left、right设置flex属性 */
+    .left, .right {
+      
+    }
+
+    <!-- 方法三：float：此时html标签顺序应该为 left、right、center，
+      因为浮动是在当前位置的水平方向浮动，若center在right前边，将会把right挤到下边一行 -->
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+
+    <!-- 方法四：利用 CSS3 的calc函数 -->
+    .wrapper {
+      /* inline元素换行导致的间隙，可通过父级字体设为0解决 */
+      font-size: 0;
+    }
+    .left, .right, .center {
+      display: inline-block;
+      font-size: 14px;
+    }
+    .left, .right {
+      vertical-align: bottom;
+    }
+    .center {
+      width: calc(100% - 600px);
+    }
+
+    <!-- 方法五：绝对定位 -->
+    .wrapper {
+      position: relative;
+    }
+    .left {
+      position: absolute;
+      left: 0;
+    }
+    .right {
+      position: absolute;
+      right: 0;
+    }
+    .center {
+      position: absolute;
+      left: 300px;
+      right: 300px;
+    }
+
+    <!-- 方法六：table布局 -->
+    .wrapper {
+      display: table;
+    }
+    .left, .right, .center {
+      dispaly: table-cell;
+    }
+    .left, .right {
+      width: 300px;
+    }
+
+    <!-- 方法七：grid 布局：此时无需设置单个元素的宽高 -->
+    .wrapper {
+      display: grid;
+      width: 100%;
+      grid-template-rows: 200px;
+      grid-template-columns: 300px auto 300px;
     }
