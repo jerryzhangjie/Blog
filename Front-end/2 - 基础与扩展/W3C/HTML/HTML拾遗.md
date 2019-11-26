@@ -10,6 +10,17 @@
 * 属性值一般放在双引号里面，这不是必需的，但推荐总是使用双引号。
 * 属性名是大小写不敏感的，onclick和onClick是同一个属性。
 
+### `href`与`src`
+
+* `href` 用于在当前文档和引用资源之间确立联系。当浏览器遇到href会并行下载资源并且不会停止对当前文档的处理。
+* `src` 用于替换当前内容。当浏览器解析到src ，会暂停其他资源的下载和处理，直到将该资源加载或执行完毕。
+
+### `script`标签的`defer`和`async`
+
+* `defer`脚本的加载过程和文档加载是异步发生的，等到文档解析完(DOMContentLoaded事件发生)脚本才开始执行。
+* `async`脚本的加载过程和文档加载也是异步发生的。但脚本下载完成后会停止HTML解析，执行脚本，脚本解析完继续HTML解析。
+* 当同时有`async`和`defer`属性时，执行效果和`async`一致。
+
 ## 基本标签
         <!DOCTYPE html>
         <html lang="en">
@@ -56,4 +67,67 @@
         <meta http-equiv="Content-Security-Policy" content="default-src 'self'">    // 修改响应头字段
         <meta http-equiv="refresh" content="30'">   // 30秒后刷新
 
+## `<img>`标签
 
+1. `loading`属性实现懒加载
+
+属性`loading`可以指定图片的懒加载，即图片默认不加载，只有即将滚动进入视口，变成用户可见时才会加载，这样节省了带宽。
+
+可取以下三个值：
+
+* `auto`:浏览器默认行为，等同于不使用loading属性;
+* `lazy`:启动懒加载；
+* `eager`:立即加载资源，无论它在页面上的哪个位置。
+
+`<img src="image.png" loading="lazy" alt="…" width="200" height="200">`
+
+由于行内图片的懒加载，可能会导致页面布局重排，所以使用这个属性的时候，最好指定图片的高和宽(注意，一旦设置了宽和高，浏览器会在网页中预先留出这个大小的空间，不管图片有没有加载成功)。
+
+2. 响应式图片
+
+**像素密度适配**
+
+        <img srcset="foo-160.jpg 160w,
+                     foo-320.jpg 320w,
+                     foo-640.jpg 640w,
+                     foo-1280.jpg 1280w"
+             src="foo-1280.jpg">
+
+根据屏幕不同像素密度(1倍屏、1.5倍屏、2倍屏)，加载不同图片。
+
+**屏幕大小适配**
+
+        <img srcset="foo-160.jpg 160w,
+                     foo-320.jpg 320w,
+                     foo-640.jpg 640w,
+                     foo-1280.jpg 1280w"
+             sizes="(max-width: 440px) 100vw,
+                    (max-width: 900px) 33vw,
+                    254px"
+             src="foo-1280.jpg">
+
+属性`sizes`用于适配不同宽度的屏幕中应该显示的图片宽度，然后从属性`srcset`中寻找最接近的图片宽度对应的图片地址进行加载，若未匹配到合适的，则加载`src`指定的默认图片。
+
+**同时考虑屏幕尺寸和像素密度**
+
+        <picture>
+          <source srcset="homepage-person@desktop.png,
+                          homepage-person@desktop-2x.png 2x"
+                  media="(min-width: 990px)">
+          <source srcset="homepage-person@tablet.png,
+                          homepage-person@tablet-2x.png 2x"
+                  media="(min-width: 750px)">
+          <img srcset="homepage-person@mobile.png,
+                       homepage-person@mobile-2x.png 2x"
+               alt="Shopify Merchant, Corrine Anestopoulos">
+        </picture>
+
+
+## `<figure>`可做语义化容器
+
+`<figure>`是一个将主体内容与附加信息`<figcaption>`，封装在一起的语义容器。
+
+        <figure>
+          <p><code>const foo = 'hello';</code></p>
+          <figcaption>JavaScript 代码示例</figcaption>
+        </figure>
