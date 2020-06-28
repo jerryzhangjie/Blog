@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防止 iframe 嵌用你的网页</title>
+</head>
+<body>
+    <p>1. 防止任何页面通过 iframe 嵌用你的网页</p>
+    <script type="text/javascript">
+        if (window != top) {    // 判断当前的window对象是否是top对象
+            top.location.href = window.location.href    // 如果不是，将top对象的网址改为你的页面的网址(不仅不让你嵌入，还要让你的页面无法显示)
+        }
+    </script>
+
+    <p>2. 防止第三方(与自己的域名不同)页面通过 iframe 嵌用你的网页</p>
+    <script type="text/javascript">
+        // 直观想法，判断域名是否一致
+        // if (window.location.hostname != top.location.hostname) {
+        //     top.location.href = window.location.href
+        // }
+        // 但是会报错，原因是在域名不同时，浏览器的同源策略会认为跨域了，既在 window.location.hostname 域名下是不允许执行 top.location.hostname 的。
+
+        // 那么思路可以改为：只要执行 top.location.hostname 会报错，就可判定是第三方页面在嵌用你的页面
+        try {
+            top.location.hostname
+            // Chrome 中，不会报错，需要做个兼容
+            if (top.location.hostname != window.location.hostname) {
+                top.location.href = window.location.href
+            }
+        } catch (e) {
+            top.location.href = window.location.href
+        }
+    </script>
+</body>
+</html>
