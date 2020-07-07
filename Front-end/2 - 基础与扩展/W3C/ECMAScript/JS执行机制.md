@@ -71,7 +71,7 @@ Javascript 设计成单线程的原因：JS 可以操作 dom，若多线程同�
 
 任务又可进一步区分为：
 * 宏任务(Macro-task)：整体代码(同步任务)、setTimeout、setInterva、ajax
-* 微任务(Micro-task)：Promise、process.nextTick（nodejs）
+* 微任务(Micro-task)：Promise、nodejs的process.nextTick（总是发生在所有异步任务之前）
 
 由此以来，事件循环的更详细表述就成了这样：
 1. 任务进入JS线程的执行栈，判断该任务为同步任务或异步任务，若为异步任务则进一步判断是宏任务还是微任务；
