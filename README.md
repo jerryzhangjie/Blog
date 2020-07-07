@@ -1,9 +1,7 @@
 # Blog
- > :house_with_garden: A project for recording my knowledge base system.
- 
  > 关注基础知识，探求底层原理，积累实战经验。
 
-## 1.项目结构解析
+## 1.项目结构说明
 * **思想与理论**：包含计算机相关理论知识、编程模式、开发模式等，偏底层或超上层的东西；
 
 * **基础与扩展**：包含前端基础知识，及基础知识的实现原理、使用技巧、注意事项等；
@@ -25,3 +23,16 @@
 * 不断优化、完善知识体系结构；
 
 * 做成gitbook电子书形式。
+
+## 目录
+
+### JS
+
+[深入理解原型及原型链](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/2%20-%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%89%A9%E5%B1%95/W3C/ECMAScript/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E5%8E%9F%E5%9E%8B%E5%8F%8A%E5%8E%9F%E5%9E%8B%E9%93%BE.md)
+
+[执行上下文、作用域与闭包](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/2%20-%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%89%A9%E5%B1%95/W3C/ECMAScript/%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87%E3%80%81%E4%BD%9C%E7%94%A8%E5%9F%9F%E4%BB%A5%E5%8F%8A%E9%97%AD%E5%8C%85.md)
+
+[字符串、数组常用方法汇总](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/2%20-%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%89%A9%E5%B1%95/W3C/ECMAScript/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.md)
+
+[深入理解JS执行机制](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/2%20-%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%89%A9%E5%B1%95/W3C/ECMAScript/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6.md)
+
