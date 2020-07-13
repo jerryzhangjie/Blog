@@ -1,6 +1,6 @@
 # 彻底理解从输入URL到页面展现的过程
 ### 流程概述
-地址栏输入url ——> 域名解析 ——> 服务器处理请求 ——> 浏览器处理响应 ——> 浏览器绘制网页
+地址栏输入url ——> 域名解析 ——> 服务器处理请求 ——> 浏览器处理响应
 
 ## 一、地址栏输入URL
 ### 1. 认识URL
@@ -105,7 +105,7 @@ MVC的处理过程是这样的：每个用户输入的请求，首先被控制�
 
    通过抓包工具截获的报文：
 
-   ![rsp.png](https://s0.lgstatic.com/i/image/M00/12/EE/CgqCHl7OM8-AJ2jzAABvLLJLW2s663.png)
+   ![CgqCHl7OM8-AJ2jzAABvLLJLW2s663](https://raw.githubusercontent.com/jerryzhangjie/image-database/master/picgo/CgqCHl7OM8-AJ2jzAABvLLJLW2s663.png)
 
 * **输入流预处理：** 字节流解码得到的字符数据还需要通过格式化处理，才能得到规范化的字符流数据。
 
