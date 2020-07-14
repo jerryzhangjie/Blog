@@ -9,19 +9,28 @@
 </head>
 
 <body>
-  <div onclick="clickFunc(event)">    
+  <div>    
     <div>        
       <div>
-        <button style="margin:10px">Button</button>
+        <button id="button">anniu</button>
       </div>
     </div>
   </div>
 
   <script>
-    function clickFunc(event) {
-      event.stopPropagation()
-      console.log(event.currentTarget);
-    }
+    var button = document.querySelector('#button')
+    button.addEventListener('mouseover', function() {
+      console.log('mouseover')
+    })
+    button.addEventListener('mouseout', function() {
+      console.log('mouseout')
+    })
+    button.addEventListener('mouseenter', function() {
+      console.log('mouseenter')
+    })
+    button.addEventListener('mouseleave', function() {
+      console.log('mouseleave')
+    })
   </script>
 </body>
 

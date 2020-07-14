@@ -47,3 +47,9 @@ event.target                      // 获取当前事件对象，事件代理中�
 
     // 需要用 document.documentElement 来表示 document 上的 html
     document.documentElement.addEventListener()
+
+## 鼠标事件执行顺序
+
+        // mouseover —— mouseout        会重复触发，会冒泡
+        // mouseenter —— mouseleave     不会重复触发，不会冒泡
+        mouseover -> mouseenter -> mouseout -> mouseleave
