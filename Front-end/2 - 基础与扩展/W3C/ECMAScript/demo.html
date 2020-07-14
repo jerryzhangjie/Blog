@@ -9,19 +9,16 @@
 </head>
 
 <body>
-  <div onclick="clickFunc(event)">    
-    <div>        
-      <div>
-        <button style="margin:10px">Button</button>
-      </div>
-    </div>
+  <div>
+    <button id="button">button</button>
   </div>
-
   <script>
-    function clickFunc(event) {
-      event.stopPropagation()
-      console.log(event.currentTarget);
-    }
+    document.querySelector('#button').addEventListener('click', function () {
+      console.log('冒泡')
+    })
+    document.querySelector('#button').addEventListener('click', function () {
+      console.log('捕获')
+    }, true)
   </script>
 </body>
 
