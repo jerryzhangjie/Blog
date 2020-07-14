@@ -1,8 +1,12 @@
 ## DOM事件的级别
 
-* DOM0  element.onclick = function() {}
+* DOM0  element.onclick = function() {} 或 html 中添加 onclick 事件
 * DOM2  element.addEventListener('click', function(){}, false)  // false 冒泡阶段触发(默认)；true 捕获阶段触发
 * DOM3  element.addEventListener('keyup', function(){}, false)
+
+DOM0 与 DOM2 绑定事件的区别？
+> DOM0绑定的事件监听函数会覆盖之前绑定的事件监听函数。（只能绑定一个）      
+> DOM2同一元素上的事件监听函数互不影响，而且可以独立取消，调用顺序和监听顺序一致。（能绑定多个）
 
 ## DOM事件模型
 
