@@ -42,3 +42,29 @@ http方法：
 
 ![methods](https://raw.githubusercontent.com/jerryzhangjie/image-database/master/picgo/methods.jpg)
 
+http状态码
+
+![status_code](https://raw.githubusercontent.com/jerryzhangjie/image-database/master/picgo/status_code.jpg)
+
+|状态码 原因|含义
+|--------|--------
+| 200 OK | 请求已成功处理
+| 204 No Content | 请求已成功处理，但无数据返回
+| 206 Partial Content | 范围请求已成功处理，返回范围内的数据
+| 301 Moved Permanently | 资源永久重定向，浏览器自动跳转到返回的新的地址
+| 302 Found | 资源临时重定向，浏览器自动跳转到返回的新的地址
+| 400 Bad Request | 无法理解该请求
+| 401 Unauthorized | 无权限访问
+| 403 Forbidden | 拒绝访问
+| 404 Not Found | 未找到请求的资源
+| 500 Internal Server Error | 服务器内部错误
+| 503 Service Unavailable | 服务器不可用
+
+HTTP+ 加密 + 认证 + 完整性保护 = HTTPS
+HTTPS 是身披 SSL 外壳的 HTTP
+HTTPS 并非是应用层的一种新协议。只是 HTTP 通信接口部分用SSL（Secure Socket Layer）和 TLS（Transport Layer Security）协议代替而已。      
+通常，HTTP 直接和 TCP 通信。当使用 SSL 时，则演变成先和 SSL 通信，再由 SSL 和 TCP 通信了。简言之，所谓 HTTPS，其实就是身披SSL 协议这层外壳的 HTTP。     
+在采用 SSL 后，HTTP 就拥有了 HTTPS 的加密、证书和完整性保护这些功能。
+
+https       
+客户端如何拿到公钥证书？
