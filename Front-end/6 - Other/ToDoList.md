@@ -6,9 +6,9 @@
 3. this   7.15
 
 ## 网络（7月13日——7月19日）
-1. 理清https是什么，怎么加密，完整通信流程
-2. CSRF和XSS
-3. token与cookie
+1. 理清https是什么，怎么加密，完整通信流程  ok
+2. CSRF和XSS    
+3. token与cookie、session   ok
 
 ## 浏览器（7月20日——7月26日）
 1. 垃圾回收机制
