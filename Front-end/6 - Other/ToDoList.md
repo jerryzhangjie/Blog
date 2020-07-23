@@ -3,7 +3,7 @@
 ## 基础知识（6月21日——7月12日）
 1. 执行上下文、作用域和闭包、闭包的使用场景、案列   7.10    ok
 2. 原型、原型链、继承   7.15   ok
-3. this   7.15
+3. this   7.15  ok
 4. 一些方法的实现：call、apply、bind、promise等     https://github.com/lgwebdream/FE-Interview/issues/29
 
 ## 网络（7月13日——7月19日）
