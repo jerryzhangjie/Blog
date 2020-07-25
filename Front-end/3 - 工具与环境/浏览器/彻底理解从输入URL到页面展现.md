@@ -83,11 +83,11 @@
 * 第二次握手，由服务器发起，告诉浏览器我准备接受了，你赶紧发送吧；
 * 第三次握手，由浏览器发送，告诉服务器，我马上就发了，准备接受吧。
 
-![3次握手.png](https://i.loli.net/2019/08/08/V7lfq8G1HjhU36o.png)
+![Screenshot0720-0939](https://raw.githubusercontent.com/jerryzhangjie/image-database/master/picgo/Screenshot0720-0939.jpg)
 
 ## 四、发送 Http 请求报文
 
-## 三、服务器处理请求
+## 五、服务器处理请求
 服务器上安装了处理http请求的应用 —— web server，常见的web server产品有apache、nginx、IIS、Lighttpd等。
 
 当web server接收到一个HTTP请求(request)，会结合配置文件，把不同请求委托给服务器上处理对应请求的程序进行处理（例如CGI脚本、JSP脚本、servlets、ASP脚本、服务器端JavaScript、或者一些其它的服务器端技术等）。不管是哪种脚本，这些服务器端(server-side)程序都会产生一个http响应(response)，例如送回一个HTML页面，来让浏览器可以展现。
@@ -98,7 +98,7 @@
 
 MVC的处理过程是这样的：每个用户输入的请求，首先被控制器(C)接收，控制器决定用哪个模型(M)来处理，然后模型用业务逻辑来处理用户的请求，再然后控制器决定用哪个视图模型(V)来接收模型处理后的数据，最后由该视图模型对应的视图格式化模型来返回HTML字符串给浏览器。
 
-## 四、浏览器处理响应
+## 六、浏览器处理响应
 浏览器接收到http返回的字节数据后，会依次经历：字节流解码、输入流预处理、加载、解析、渲染。
 
 * **字节流解码：** http 返回报文，都是字节数据。浏览器得到字节数据后，会通过“[编码嗅探算法](https://html.spec.whatwg.org/multipage/parsing.html#encoding-sniffing-algorithm)”来获知字符编码方式，然后通过该编码方式将字节数据解码为字符数据。
@@ -159,3 +159,7 @@ MVC的处理过程是这样的：每个用户输入的请求，首先被控制�
    1. 渲染过程的性能消耗主要是布局和绘制；
    2. 重排一定重绘，重绘不一定重排
    3. dom操作很消耗性能的原因：a.涉及JS引擎和渲染引擎跨线程的通信; b.会频繁触发重排和重绘。
+
+## 七、四次挥手断开连接
+
+![20200720093750](https://raw.githubusercontent.com/jerryzhangjie/image-database/master/picgo/20200720093750.jpg)
