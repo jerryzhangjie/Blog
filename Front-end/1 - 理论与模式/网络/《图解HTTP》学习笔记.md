@@ -54,6 +54,7 @@
    | 206 Partial Content | 范围请求已成功处理，返回范围内的数据
    | 301 Moved Permanently | 资源永久重定向，浏览器自动跳转到返回的新的地址
    | 302 Found | 资源临时重定向，浏览器自动跳转到返回的新的地址
+   | 304 Not Modified | 服务端已经执行了GET，但文件未变化，可使用浏览器缓存
    | 400 Bad Request | 无法理解该请求
    | 401 Unauthorized | 无权限访问
    | 403 Forbidden | 拒绝访问

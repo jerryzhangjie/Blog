@@ -8,9 +8,9 @@
 
 ## 网络（7月13日——7月19日）
 1. 理清https是什么，怎么加密，完整通信流程  ok
-2. CSRF和XSS   https://github.com/lgwebdream/FE-Interview/issues/16 
+2. CSRF和XSS   https://github.com/lgwebdream/FE-Interview/issues/16   ok
 3. token与cookie、session   ok
-4. http缓存策略     https://github.com/lgwebdream/FE-Interview/issues/14
+4. http缓存策略     https://github.com/lgwebdream/FE-Interview/issues/14  ok
 
 ## 浏览器（7月20日——7月26日）
 1. 垃圾回收机制
