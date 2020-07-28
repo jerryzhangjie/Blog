@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p>aaaaaa</p>
+        <p>bbbbbb</p>
+    </div>
+
+    <script>
+        // 立即执行函数实现全局注册
+        ;(function(window){
+            var zQuery = function(selector) {
+                return new zQuery.fn.init(selector)
+            }
+            
+            zQuery.fn = zQuery.prototype = {
+                // 获取对象 —— 选择器(id、class、标签) 返回结构为：{0: div, length: 1, __proto__: object}
+                init: function(selector) {  // fn 对象的构造函数
+                    // this[0] = []
+                    var rs = null
+                    if (typeof selector !== 'undefined') {
+                        var sltType = selector.substr(0, 1)
+                        if (sltType === '#') {
+                            rs = document.querySelector(selector)
+                            this[0] = rs
+                        } else {
+                            rs = document.querySelectorAll(selector)
+                            var len = rs.length
+                            for (var i = 0; i < len; i++) {
+                                this[i] = rs[i]
+                            }
+                        }
+                        this.length = rs.length
+                    }
+                    return this
+                },
+                // 操作对象(find、html、css、show、hide)
+                find: function(subSelector) {
+                    var len = this.length
+                    var subRs = null
+                    for (var i = 0; i < len; i++) {
+                        if (typeof subSelector !== 'undefined') {
+                            var subSltType = subSelector.substr(0, 1)
+                            if (subSltType === '#') {
+                                subRs = document.querySelector(subSelector)
+                                this[0] = subRs
+                            } else {
+                                subRs = document.querySelectorAll(subSelector)
+                                var subLen = subRs.length
+                                for (var j = 0; j < subLen; j++) {
+                                    this[j] = subRs[j]
+                                }
+                            }
+                        }
+                    }
+                    this.length = subRs.length
+                    return this
+                },
+                html: function(value) {
+                    var length = this.length
+                    for (var i = 0; i < length; i++) {
+                        this[i].innerHTML = value
+                    }
+                    return this
+                },
+                css: function(attr, value) {
+                    var length = this.length
+                    for (var i = 0; i < length; i++) {
+                        this[i].style[attr] = value
+                    }
+                    return this
+                },
+                show: function() {
+                    var length = this.length
+                    for (var i = 0; i < length; i++) {
+                        this[i].style.display = 'block'
+                    }
+                    return this
+                },
+                hide: function() {
+                    var length = this.length
+                    for (var i = 0; i < length; i++) {
+                        this[i].style.display = 'none'
+                    }
+                    return this
+                },
+            }
+
+            zQuery.fn.init.prototype = zQuery.fn
+
+            window.$ = zQuery
+
+            // 工具方法 —— ajax
+            window.$.ajax = function({url, dataType, success}) {
+                var xhr = new XMLHttpRequest()
+                xhr.open(dataType, url)
+                xhr.send(null)
+                xhr.onreadystatechange = function() {
+                    if (xhr.status === 200) {
+                        success(xhr.responseText)
+                    }
+                }
+            }
+
+            // 插件扩展方法 extend
+            function extend(obj) {
+                var k
+                for (k in obj) {
+                    this[k] = obj[k]
+                }
+            }
+
+            zQuery.extend = extend
+            zQuery.fn.extend = extend
+        })(window)
+    </script>
+</body>
+</html>

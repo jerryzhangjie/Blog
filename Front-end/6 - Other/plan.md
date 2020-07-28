@@ -25,18 +25,20 @@
 3. 安全
 
 #### 4. 框架（7月27日——8月9日）
-1. jquery
-2. Vue基础、技术栈基础
-3. Vue、Vuex、Vue-Router原理相关
-4. React基础及与Vue对比
-5. electron基本原理
+1. jquery 与 Vue 对比
+2. MVP、MVC、MVVM对比
+3. Vue基础、技术栈基础
+4. Vue、Vuex、Vue-Router原理相关
+5. React基础及与Vue对比
+6. electron基本原理
 
 #### 5. webpack与工程化（8月10日——8月16日）
 1. 对工程化、组件化、模块化的理解，及最佳实践
-2. webpack原理、常用配置、优化方法 对比 parcel
-3. 开发、发布流程
-4. react项目中调用vue组件
-5. babel 原理
+2. AMD、CMD、ES6 Module对比
+3. webpack原理、常用配置、优化方法 对比 parcel
+4. 开发、发布流程
+5. react项目中调用vue组件
+6. babel 原理
 
 #### 6. 性能优化（8月17日——8月23日）
 1. 代码
