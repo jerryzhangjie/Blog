@@ -82,7 +82,7 @@
 
 #### 默认端口
 
-http - 80、htps - 443
+http - 80、https - 443
 
 #### https通信过程？
 
@@ -116,8 +116,10 @@ b. 浏览器中预先内嵌了证书颁发机构的公钥。
 
 ## cookie、session 与 token 的区别
 
-   * session 存储于服务器，可以理解为一个状态列表，拥有一个唯一识别符号 sessionId，通常放在 cookie 中传输。服务器收到 cookie 后解析出 sessionId，再去 session 列表中查找，才能找到相应session。依赖cookie。
-   * cookie 类似一个令牌，装有 sessionId，存储在客户端，浏览器通常会自动添加。
-   * token 也类似一个令牌，无状态，用户信息都被加密到 token 中，通常存放在客户端，需要开发者手动添加在请求中，服务器收到 token 后解密就可知道是哪个用户。
+   * session 是由服务端针对当前对话，生成的一个随机数，通常放在cookie中发送给客户端，并存储在服务器的session列表中。客户端发送请求时cookie中携带session。服务器收到 cookie 后解析出 sessionId，再去 session 列表中查找，若能查到则匹配成功。
+   * cookie 是由服务端生成，用于传输用户信息，存储在客户端，请求中会自动添加。
+   * token 是由服务端根据用户id、用户名、定义好的密钥、过期时间生成的签名令牌，通常存放在客户端的localStroage，请求时手动添加在请求头中，服务器收到 token 后解密就可知道是哪个用户。与session相比，不需要存储在服务端，是用计算性能换取存储空间的方案，服务器的横向扩展性更好。同时，也是CSRF（跨站请求伪造）的解决方案。
 
-   参考 [彻底弄懂session，cookie，token](https://segmentfault.com/a/1190000017831088)
+   参考 
+   [彻底理解cookie，session，token](https://www.cnblogs.com/moyand/p/9047978.html)     
+   [彻底弄懂session，cookie，token](https://segmentfault.com/a/1190000017831088)

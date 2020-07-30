@@ -8,26 +8,40 @@
 </head>
 
 <body>
-    <div>
+    <!-- <div>
         <p id="num"></p>
         <button id="decrease"> - </button>
         <button id="increase"> + </button>
     </div>
 
-    <!-- <script src="./demoMVC.js"></script> -->
+    <script src="./demoMVC.js"></script>
     <script src="./demoMVP.js"></script>
     <script>
         // MVC
-        // ;(function() {
-        //     var controller = new myapp.Controller()
-        //     controller.init()
-        // })()
+        ;(function() {
+            var controller = new myapp.Controller()
+            controller.init()
+        })()
 
         // MVP
         ;(function() {
             var view = new myapp.View()
             view.init()
         })()
+    </script> -->
+
+    <!-- MVVM -->
+    <div id="app">
+        
+    </div>
+    <script src="./demoMVVM.js"></script>
+    <script>
+        let mvvm = new Mvvm({
+            el: '#app',
+            data: {
+                song: '发如雪'
+            }
+        })
     </script>
 </body>
 
