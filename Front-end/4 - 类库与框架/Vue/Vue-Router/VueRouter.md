@@ -173,3 +173,31 @@ const router = new VueRouter({
   }
 })
 ```
+
+* 路由懒加载    
+    
+  结合`Vue`的异步组件和`Webpack`的代码分割功能，轻松实现路由组件的懒加载。    
+  首先，`Vue`异步组件：可以将异步组件定义为返回一个`Promise`的工厂函数（该函数返回的 Promise 应该 resolve 组件本身）
+
+      const Foo = () => Promise.resolve({/* 组件定义对象 */})
+
+  其次，`Webpack`代码分割：在`Webpack 2`中，可以使用`动态import`语法来定义代码分块点
+
+      import('./Foo.vue') // 返回 Promise
+  
+  两者结合，可在`VueRouter`中，这样实现组件懒加载：
+
+      // 懒加载
+      const Foo = () => import('./Foo.vue') // webpack 打包时生成单独文件
+      // 使用
+      const router = new VueRouter({
+        routes: [
+          { path: '/foo', component: Foo }  // 当路由生效时，就会去懒加载 Foo 组件的打包文件
+        ]
+      })
+
+  按组分块，是指使用名称`chunk`，将几个异步组件打包到同一个文件中
+
+      const Foo = () => import(/* webpackChunkName: "group-foo" */ './Foo.vue')
+      const Bar = () => import(/* webpackChunkName: "group-foo" */ './Bar.vue')
+      const Baz = () => import(/* webpackChunkName: "group-foo" */ './Baz.vue')
