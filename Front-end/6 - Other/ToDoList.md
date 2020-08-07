@@ -17,8 +17,11 @@
 
 ## 框架（7月27日——8月9日）
 1. jquery自定义方法的实现   ok
-2. jquery的ajax封装方法
+2. jquery的ajax封装方法    ok
 3. vue技术栈基础常见知识点
+4. vue响应式原理
+5. vue-router、vuex基本使用
+6. vue-router、vuex实现原理
 
 ## webpack与工程化（8月10日——8月16日）
 1. webpack 原理及常用配置

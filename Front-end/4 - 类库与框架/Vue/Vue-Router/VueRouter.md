@@ -89,10 +89,10 @@ const router = new VueRouter({
 })
 ```
 
-* 函数式编程
-this.$router.push(path)     将当前路径添加至浏览器的history，并跳转至path
-this.$router.replace(path)  不添加history，直接跳转至path
-this.$router.go(n)          在 history 记录中向前或者后退n步
+* 函数式编程    
+this.$router.push(path)     将当前路径添加至浏览器的history，并跳转至path   
+this.$router.replace(path)  不添加history，直接跳转至path   
+this.$router.go(n)          在 history 记录中向前或者后退n步    
 ```
 <!-- push、replace用法相同 -->
 // 字符串

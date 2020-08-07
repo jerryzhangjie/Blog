@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{firstName}}
+        <input type="text" v-model="lastName">
+        <p>{{lastName}}</p>
+    </div>
+
+    <script src="./mini-vue.js"></script>
+    <script>
+        const vm = new MiniVue({
+            el: '#app',
+            data: {
+                firstName: 'jie',
+                lastName: 'zhang'
+            }
+        })
+    </script>
+</body>
+</html>
