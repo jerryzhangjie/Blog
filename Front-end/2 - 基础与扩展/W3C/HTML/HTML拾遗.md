@@ -17,7 +17,7 @@
 
 ### `script`标签的`defer`和`async`
 
-* `defer`脚本的加载过程和文档加载是异步发生的，等到文档解析完(DOMContentLoaded事件发生)脚本才开始执行。
+* `defer`脚本的加载过程和文档加载是异步发生的，等到文档解析完(DOMContentLoaded事件发生前)脚本才开始执行。
 * `async`脚本的加载过程和文档加载也是异步发生的。但脚本下载完成后会停止HTML解析，执行脚本，脚本解析完继续HTML解析。
 * 当同时有`async`和`defer`属性时，执行效果和`async`一致。
 
@@ -53,14 +53,12 @@
 * `charset`属性指定网页的编码方式。几乎总是应该采用 `UTF-8` ，且应该与网页实际的编码方式一致，即声明了utf-8，网页就应该使用 UTF-8 编码保存。
 * `name` 属性表示元数据的名字，`content` 属性表示元数据的值，一些常见的：
   
+        <meta name="application-name" content="Application Name">       // 当前web应用的名称
         <meta name="description" content="HTML 语言入门">
         <meta name="keywords" content="HTML,教程">
         <meta name="author" content="张三">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="application-name" content="Application Name">
-        <meta name="generator" content="program">
-        <meta name="subject" content="your document's subject">
-        <meta name="referrer" content="no-referrer">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"">
+        <meta name="renderer" content="webkit">         // 针对多内核浏览器指定默认渲染内核
 
 * `http-equiv` 属性用来覆盖 `HTTP` 响应的头信息字段，`content` 属性是该字段的内容。
 
@@ -82,6 +80,8 @@
 `<img src="image.png" loading="lazy" alt="…" width="200" height="200">`
 
 由于行内图片的懒加载，可能会导致页面布局重排，所以使用这个属性的时候，最好指定图片的高和宽(注意，一旦设置了宽和高，浏览器会在网页中预先留出这个大小的空间，不管图片有没有加载成功)。
+
+[兼容性](https://caniuse.com/#search=loading)：Chrome、Firefox、Opera最新版，IE不支持。
 
 2. 响应式图片
 
