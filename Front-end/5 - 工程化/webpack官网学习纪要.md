@@ -53,6 +53,12 @@
             new HtmlWebpackPlugin({template: './src/index.html'})
         ]
 
+常用插件：      
+
+* clean-webpack-plugin: ClearWebpackPlugin 清空打包目录 dist
+* webpack-bundle-analyzer: BundleAnalyzerPlugin 可视化分析打包后的文件构成
+* 
+
 ## 模式
 
 功能：
