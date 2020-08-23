@@ -46,7 +46,7 @@
 
 [3. 字符串、数组常用方法自查手册](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/2%20-%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%89%A9%E5%B1%95/W3C/ECMAScript/%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%92%8C%E6%95%B0%E7%BB%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95.md)
 
-[4. 深入理解JS执行机制](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/2%20-%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%89%A9%E5%B1%95/W3C/ECMAScript/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6.md)
+[4. JS编译执行机制](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/2%20-%20%E5%9F%BA%E7%A1%80%E4%B8%8E%E6%89%A9%E5%B1%95/W3C/ECMAScript/JS%E7%BC%96%E8%AF%91%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6.md)
 
 ### 浏览器
 
@@ -86,18 +86,18 @@
 
 ### 实践总结
 
-[1. 跨域及解决方案汇总](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/5%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%B1%87%E6%80%BB.md)
+[1. 跨域与解决方案汇总](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/6%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E8%B7%A8%E5%9F%9F%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%E6%B1%87%E6%80%BB.md)
 
-[2. 实时刷新实现方案](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/5%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E5%AE%9E%E6%97%B6%E5%88%B7%E6%96%B0%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88.md)
+[2. 实时刷新实现方案](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/6%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E5%AE%9E%E6%97%B6%E5%88%B7%E6%96%B0%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%A1%88.md)
 
-[3. 页面埋点实践](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/5%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E9%A1%B5%E9%9D%A2%E5%9F%8B%E7%82%B9%E5%AE%9E%E8%B7%B5.md)
+[3. 页面埋点实践](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/6%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E9%A1%B5%E9%9D%A2%E5%9F%8B%E7%82%B9%E5%AE%9E%E8%B7%B5.md)
 
-[4. 结合场景理解节流和防抖](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/5%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E7%BB%93%E5%90%88%E5%9C%BA%E6%99%AF%E7%90%86%E8%A7%A3%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96.md)
+[4. 结合场景理解节流和防抖](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/6%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E7%BB%93%E5%90%88%E5%9C%BA%E6%99%AF%E7%90%86%E8%A7%A3%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96.md)
 
-[5. 前端性能优化](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/5%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
+[5. 前端性能优化](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/6%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%E5%89%8D%E7%AB%AF%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96.md)
 
 ### 其它
 
-[1. Markdown 语法指北](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/6%20-%20Other/Markdown%E8%AF%AD%E6%B3%95%E6%8C%87%E5%8C%97.md)
+[1. Markdown 语法自查手册](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/7%20-%20Other/Markdown%E8%AF%AD%E6%B3%95%E8%87%AA%E6%9F%A5%E6%89%8B%E5%86%8C.md)
 
-[2. 工欲善其事必先利其器 —— Fiddler](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/5%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%20%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B/Fiddler.md)
+[2. 工欲善其事必先利其器 —— Fiddler](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/6%20-%20%E5%AE%9E%E8%B7%B5%E4%B8%8E%E6%80%BB%E7%BB%93/%20%E5%B7%A5%E6%AC%B2%E5%96%84%E5%85%B6%E4%BA%8B/Fiddler.md)
