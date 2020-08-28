@@ -1,5 +1,5 @@
 /**
- * 1. instanceof
+ * instanceof
  * 原理：
  *      当原型函数的 prototype 出现在实例对象的 _proto_ 原型链上，instanceof 返回 true，否则返回 false
  */
@@ -15,9 +15,9 @@ function myInstanceof(left, right) {
 }
 
 // Demo
-class A{}
-class B extends A{}
-class C{}
+class A { }
+class B extends A { }
+class C { }
 
 const b = new B()
 console.log('--------------------myInstanceof---------------------')
@@ -25,8 +25,10 @@ console.log(myInstanceof(b, B))   // true
 console.log(myInstanceof(b, A))   // true
 console.log(myInstanceof(b, C))   // false
 
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
 /**
- * 2. new 操作符
+ * new 操作符
  * 原理：
  *      new 依次实现了 
  *          a.创建一个空对象；
@@ -56,3 +58,134 @@ function constructor(name, weight) {
 const newObj = myNew(constructor, 'Jerry', 70)
 console.log('--------------------myNew---------------------')
 console.log(newObj)
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/**
+ * Promise  
+ * 是一个对象，可以理解成一个盒子，里边存放着一个值（这个值是执行某个异步操作得到的），resolve、reject负责修改Promise的状态，并将“值”传递出去
+ * @param {function} handle 唯一的参数，是个函数，而这个函数有两个参数：resolve、reject，二者也是函数。
+ * resolve 用于将Promise的状态从 Pending(进行中) 变为 Fulfilled(已成功)，并接收Promise的值，并将值传递出去
+ * reject 用于将Promise的状态从 Pending(进行中) 变为 Rejected(已失败)，并接收Promise的值，并将值传递出去
+ */
+const isFun = fun => typeof fun === 'function'  // 判断是否为函数
+// 定义Promise的三种状态常量
+const PENDING = 'PENDING'
+const FULFILLED = 'FULFILLED'
+const REJECTED = 'REJECTED'
+class MyPromise {
+    constructor(handle) {
+        if (!isFun(handle)) {
+            throw new Error('MyPromise must accept a function parameter')
+        }
+        // 添加状态
+        this._status = PENDING
+        // 添加值
+        this._value = undefined
+        // 执行handle
+        try {
+            handle(this._resolve.bind(this), this._reject.bind(this))
+        } catch (err) {
+            this._reject(err)
+        }
+    }
+    // 添加resovle时执行的函数
+    _resolve(val) {
+        if (this._status !== PENDING) return
+        this._status = FULFILLED
+        this._value = val
+    }
+    // 添加reject时执行的函数
+    _reject(err) {
+        if (this._status !== PENDING) return
+        this._status = REJECTED
+        this._value = err
+    }
+    // 添加then方法
+    then(onFulfilled, onRejected) {
+        const { _value, _status } = this
+        // 返回一个新的Promise对象
+        return new MyPromise((onFulfilledNext, onRejectedNext) => {
+            switch (_status) {
+                // 当状态为pending时，将then方法回调函数加入执行队列等待执行
+                case PENDING:
+                    break
+                // 当状态已经改变时，立即执行对应的回调函数
+                case FULFILLED:
+                    onFulfilled(_value)
+                    break
+                case REJECTED:
+                    onRejected(_value)
+                    break
+            }
+        })
+    }
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/**
+ * call
+ */
+Function.prototype.call = function(context, ...args) {
+    context = context || window
+    const func = Symbol()
+    context[func] = this
+    const result = context[func](...args)
+    delete context[func]
+    return result
+}
+/**
+ * apply
+ */
+Function.prototype.apply = function(context, arr) {
+    context = context || window
+    const func = Symbol()
+    context[func] = this
+    const result = context[func](...arr)
+    delete context[func]
+    return result
+}
+/**
+ * bind
+ */
+Function.prototype.bind = function(context, ...argsA) {
+    const self = this
+    return function(...argsB) {
+        return self.apply(context, argsA.concat(argsB))
+    }
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/**
+ * Object.assign
+ */
+Object.assign = function(target, ...objs) {
+    objs.forEach(obj => {
+        if (obj !== null) {
+            for (let key in obj) {
+                target[key] = obj[key]
+            }
+        }
+    })
+    return target
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+
+/**
+ * 数组扁平化
+ */
+function flatten(array) {
+    return array.reduce((resultArray, currentValue) => {
+        currentValue = Array.isArray(currentValue) ? flatten(currentValue) : currentValue
+        resultArray.concat(currentValue)
+    }, [])
+}
+
+let ar = flatten([1,2,[3,4,[5,6]]])
+console.log(ar)
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+

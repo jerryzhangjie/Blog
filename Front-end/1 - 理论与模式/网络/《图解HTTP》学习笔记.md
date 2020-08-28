@@ -116,11 +116,17 @@ b. 浏览器中预先内嵌了证书颁发机构的公钥。
 
 ## cookie、session 与 token 的区别
 
+   Cookie通过在客户端记录信息确定用户身份，Session通过在服务器端记录信息确定用户身份。    
+   Cookie存放在硬盘中。为了获得更高的存取速度，服务器一般把Session放在内存里。    
+   Session是服务器端使用的一种记录客户端状态的机制，使用上比Cookie简单一些，相应的也增加了服务器的存储压力。客户端浏览器访问服务器的时候，服务器把客户端信息以某种形式记录在服务器上。这就是Session。Cookie机制是通过检查客户身上的“通行证”来确定客户身份的话，那么Session机制就是通过检查服务器上的“客户明细表”来确认客户身份。Session相当于程序在服务器上建立的一份客户档案，客户来访的时候只需要查询客户档案表就可以了。
+   cookie中存放的是例如jgvsessid字段，是“客户明细表”中Session的id，有了该id，服务端才能查找对应的Session数据。因此同一机器的两个浏览器窗口访问服务器时，会生成两个不同的Session。      
+
    * session 是由服务端针对当前对话，生成的一个随机数，通常放在cookie中发送给客户端，并存储在服务器的session列表中。客户端发送请求时cookie中携带session。服务器收到 cookie 后解析出 sessionId，再去 session 列表中查找，若能查到则匹配成功。
    * cookie 是由服务端生成，用于传输用户信息，存储在客户端，请求中会自动添加。
    * token 是由服务端根据用户id、用户名、定义好的密钥、过期时间生成的签名令牌，通常存放在客户端的localStroage，请求时手动添加在请求头中，服务器收到 token 后解密就可知道是哪个用户。与session相比，不需要存储在服务端，是用计算性能换取存储空间的方案，服务器的横向扩展性更好。同时，也是CSRF（跨站请求伪造）的解决方案。
 
    参考 
+   [如何区分不同用户——Cookie/Session机制详解](https://www.cnblogs.com/zhouhbing/p/4204132.html)
    [彻底理解cookie，session，token](https://www.cnblogs.com/moyand/p/9047978.html)     
    [彻底弄懂session，cookie，token](https://segmentfault.com/a/1190000017831088)
 
