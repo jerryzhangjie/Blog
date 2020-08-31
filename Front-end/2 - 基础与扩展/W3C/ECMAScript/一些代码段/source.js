@@ -177,11 +177,41 @@ Object.assign = function(target, ...objs) {
 /**
  * 数组扁平化
  */
+// 方法一：递归
+// 普通递归
+function flatten(array) {
+    let result = []
+    array.forEach((item, i) => {
+        if (array.isArray(item)) {
+            result = result.concat(flatten(item))
+        } else {
+            result.push(item)
+        }
+    })
+}
+
+// reduce递归
 function flatten(array) {
     return array.reduce((resultArray, currentValue) => {
         currentValue = Array.isArray(currentValue) ? flatten(currentValue) : currentValue
         resultArray.concat(currentValue)
     }, [])
+}
+
+// 方法二：toString()  利用其能将数组变成以逗号分隔的字符串特性 [1, [2, [3, [4, 5]]]].toString() -> '1,2,3,4,5'
+function flatten(array) {
+    let str = array.toString()          // '1,2,3,4,5'
+    let strArray = str.split(',')       // ['1', '2', '3', '4', '5']
+    array = array.map(item => +item)    // 隐式类型转换，字符串 -> 数字
+    return array
+}
+
+// 方法三：结构运算符 ...   利用 ... 可以展开最外层数组的特性
+function flatten(array) {
+    while (array.some(item => Array.isArray(item))) {
+        array = [].concat(...array)
+    }
+    return array
 }
 
 let ar = flatten([1,2,[3,4,[5,6]]])
