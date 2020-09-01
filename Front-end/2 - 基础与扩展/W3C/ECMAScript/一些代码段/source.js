@@ -4,12 +4,12 @@
  *      当原型函数的 prototype 出现在实例对象的 _proto_ 原型链上，instanceof 返回 true，否则返回 false
  */
 function myInstanceof(left, right) {
-    let proto = left._proto_
+    let proto = Object.getPrototypeOf(left)
     while (proto) {
         if (proto === right.prototype) {
             return true
         }
-        proto = proto._proto_
+        proto = Object.getPrototypeOf(proto)
     }
     return false
 }
@@ -140,8 +140,10 @@ Function.prototype.call = function(context, ...args) {
  */
 Function.prototype.apply = function(context, arr) {
     context = context || window
+    // 将调用函数设置为目标对象的方法
     const func = Symbol()
     context[func] = this
+    // 执行函数获取结果
     const result = context[func](...arr)
     delete context[func]
     return result
