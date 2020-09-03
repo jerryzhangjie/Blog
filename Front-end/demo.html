@@ -31,6 +31,28 @@
     <div id="container">
         <div id="center"></div>
     </div>
+
+    <script>
+        function sort(arr) {
+            let len = arr.length
+            // 结束递归
+            if (len <= 1) {
+                return arr
+            }
+            // 拿到中间项，并从数组中将中间项去掉(去掉一个后，len变成了len-1)
+            let middleIndex = Math.floor(len / 2)
+            let middleValue = arr.splice(middleIndex, 1)
+            len -= 1
+            // 建立两个数组，比中间项小的放入leftArr，反之放入rightArr
+            let leftArr = [], rightArr = []
+            for (let i = 0; i < len; i++) {
+                let item = arr[i]
+                item < middleValue ? leftArr.push(item) : rightArr.push(item)
+            }
+            return sort(leftArr).concat(middleValue, sort(rightArr))
+        }
+        sort([3,1,2])
+    </script>
 </body>
 
 </html>
