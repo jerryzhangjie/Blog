@@ -33,25 +33,53 @@
     </div>
 
     <script>
-        function sort(arr) {
-            let len = arr.length
-            // 结束递归
-            if (len <= 1) {
-                return arr
-            }
-            // 拿到中间项，并从数组中将中间项去掉(去掉一个后，len变成了len-1)
-            let middleIndex = Math.floor(len / 2)
-            let middleValue = arr.splice(middleIndex, 1)
-            len -= 1
-            // 建立两个数组，比中间项小的放入leftArr，反之放入rightArr
-            let leftArr = [], rightArr = []
-            for (let i = 0; i < len; i++) {
-                let item = arr[i]
-                item < middleValue ? leftArr.push(item) : rightArr.push(item)
-            }
-            return sort(leftArr).concat(middleValue, sort(rightArr))
+        // 方法一：ES6 flat方法 参数默认为1 - 展平一层，Infinity - 无论几层都展成一维。
+        function flatten1(array) {
+            return array.flat(Infinity)
         }
-        sort([3,1,2])
+   
+        // 方法二：递归
+        // 普通递归
+        function flatten2(array) {
+            let result = []
+            array.forEach((item, i) => {
+                if (Array.isArray(item)) {
+                    result = result.concat(flatten2(item))
+                } else {
+                    result.push(item)
+                }
+            })
+            return result
+        }
+
+        // reduce递归
+        function flatten3(array) {
+            return array.reduce((resultArray, currentValue) => {
+                currentValue = Array.isArray(currentValue) ? flatten3(currentValue) : currentValue
+                return resultArray.concat(currentValue)
+            }, [])
+        }
+
+        // 方法三：解构运算符 + concat ...   
+        // 利用...可以将最外层数组转为逗号分隔的参数序列
+        // 利用concat可以实现将多个参数拼接到数组上 [1,2].concat(3, 4) -> [1,2,3,4]
+        function flatten4(array) {
+            while (array.some(item => Array.isArray(item))) {
+                array = [].concat(...array)
+            }
+            return array
+        }
+
+        // 方法四：toString()  利用其能将数组变成以逗号分隔的字符串特性 [1, [2, [3, [4, 5]]]].toString() -> '1,2,3,4,5'  缺点：仅适用纯数字组成的数组
+        function flatten5(array) {
+            let str = array.toString()          // '1,2,3,4,5'
+            let strArray = str.split(',')       // ['1', '2', '3', '4', '5']
+            strArray = strArray.map(item => +item)    // 隐式类型转换，字符串 -> 数字
+            return strArray
+        }
+
+        let ar = flatten5([1,2,[3,4,[5,6]]])
+        console.log(ar)
     </script>
 </body>
 
