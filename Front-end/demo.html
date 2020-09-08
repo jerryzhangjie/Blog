@@ -33,53 +33,22 @@
     </div>
 
     <script>
-        // 方法一：ES6 flat方法 参数默认为1 - 展平一层，Infinity - 无论几层都展成一维。
-        function flatten1(array) {
-            return array.flat(Infinity)
-        }
-   
-        // 方法二：递归
-        // 普通递归
-        function flatten2(array) {
-            let result = []
-            array.forEach((item, i) => {
-                if (Array.isArray(item)) {
-                    result = result.concat(flatten2(item))
-                } else {
-                    result.push(item)
+        function getFirstUnique(arr) {
+            let len = arr.length
+            let target = ''
+            for (let i = 0; i < len; i++) {
+                let item = arr[i]
+                // let newArr = [].concat(arr.slice(0, i), arr.slice(i+1))
+                let newArr = [].slice(0)    // 深拷贝数组，确保for循环时arr不变
+                newArr.splice(i, 1)
+                if (!newArr.includes(item)) {
+                    target = item
+                    break
                 }
-            })
-            return result
-        }
-
-        // reduce递归
-        function flatten3(array) {
-            return array.reduce((resultArray, currentValue) => {
-                currentValue = Array.isArray(currentValue) ? flatten3(currentValue) : currentValue
-                return resultArray.concat(currentValue)
-            }, [])
-        }
-
-        // 方法三：解构运算符 + concat ...   
-        // 利用...可以将最外层数组转为逗号分隔的参数序列
-        // 利用concat可以实现将多个参数拼接到数组上 [1,2].concat(3, 4) -> [1,2,3,4]
-        function flatten4(array) {
-            while (array.some(item => Array.isArray(item))) {
-                array = [].concat(...array)
             }
-            return array
+            return target
         }
-
-        // 方法四：toString()  利用其能将数组变成以逗号分隔的字符串特性 [1, [2, [3, [4, 5]]]].toString() -> '1,2,3,4,5'  缺点：仅适用纯数字组成的数组
-        function flatten5(array) {
-            let str = array.toString()          // '1,2,3,4,5'
-            let strArray = str.split(',')       // ['1', '2', '3', '4', '5']
-            strArray = strArray.map(item => +item)    // 隐式类型转换，字符串 -> 数字
-            return strArray
-        }
-
-        let ar = flatten5([1,2,[3,4,[5,6]]])
-        console.log(ar)
+        console.log(getFirstUnique([1,2,1,2,3,4,5,3,5]))
     </script>
 </body>
 
