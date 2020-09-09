@@ -33,22 +33,56 @@
     </div>
 
     <script>
-        function getFirstUnique(arr) {
-            let len = arr.length
-            let target = ''
-            for (let i = 0; i < len; i++) {
-                let item = arr[i]
-                // let newArr = [].concat(arr.slice(0, i), arr.slice(i+1))
-                let newArr = [].slice(0)    // 深拷贝数组，确保for循环时arr不变
-                newArr.splice(i, 1)
-                if (!newArr.includes(item)) {
-                    target = item
-                    break
-                }
+        // 实现函数`Validator`用于验证权限(其中一个或多个): 1.必须是数组，2.长度必须大于3，3. 元素必须为数字
+
+// 定义策略
+var strategies = {
+    checkType: function(data) {
+        return Array.isArray(data)
+    },
+    checkLength: function(data) {
+        return data.length > 3
+    },
+    checkNumber: function(data) {
+        return data.every(function(item) {
+            return !isNaN(item)
+        })
+    }
+}
+
+// 定义`Validator`
+var Validator = function() {
+    this.cache = []
+    // 添加策略
+    this.add = function(data, strategyName) {
+        this.cache.push(function() {
+            return strategies[strategyName](data)
+        })
+    }
+    // 验证策略
+    this.check = function() {
+        let len = this.cache.length
+        for (let i = 0; i < len; i++) {
+            let valiFn = this.cache[i]
+            var isCheck = valiFn()
+            if (!isCheck) {
+                return false
             }
-            return target
         }
-        console.log(getFirstUnique([1,2,1,2,3,4,5,3,5]))
+        return true
+    }
+}
+
+// 使用1：input1需验证：1.必须是数组，2.长度必须大于3
+
+var checkInput1 = function(data) {
+    var validator = new Validator()
+    validator.add(data, 'checkType')
+    validator.add(data, 'checkLength')
+    return validator.check()
+}
+
+console.log(checkInput1([1,5]))
     </script>
 </body>
 
