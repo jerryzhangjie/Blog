@@ -57,3 +57,10 @@ event.target                      // 获取当前事件对象，事件代理中�
         // mouseover —— mouseout        会重复触发，会冒泡
         // mouseenter —— mouseleave     不会重复触发，不会冒泡
         mouseover -> mouseenter -> mouseout -> mouseleave
+
+## body绑定滚动事件
+
+body仅能通过 `document.querySelector('body').onscroll = function() { console.log(1) }` 绑定滚动。
+`addEventListener`添加的无效
+
+什么原因？？？？
