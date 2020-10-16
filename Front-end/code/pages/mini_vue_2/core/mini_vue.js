@@ -28,17 +28,21 @@ function observer(data) {
 }
 
 function Observer(data) {
+  let dep = new Dep()
   for (let key in data) {
     let val = data[key]
+    observer(val)
     Object.defineProperty(data, key, {
       enumerable: true,   // 可枚举
       get() {
+          Dep.target && dep.addSub(Dep.target)
           return val
       },
       set(newVal) {
           if (val === newVal) return
           val = newVal
           observer(val)
+          dep.notify()
       }
     })
   }
@@ -71,6 +75,9 @@ function Compile(vm) {
           node.addEventListener('input', e => {
             vm[exp] = e.target.value
           })
+          new Watcher(vm, exp, function(newVal) {
+            node.value = newVal
+          })
         })
       }
 
@@ -86,6 +93,9 @@ function Compile(vm) {
             val = vm[key]
           })
           node.textContent = text.replace(reg, val)
+          new Watcher(vm, RegExp.$1, function(newVal) {
+            node.textContent = text.replace(reg, newVal)
+          })
         }
       }
 
@@ -98,4 +108,39 @@ function Compile(vm) {
 
   // 内存dom转为真实dom
   vm.$el.appendChild(fragment)
+}
+
+// 发布订阅
+function Dep() {
+  this.subs = []  // 存放 watcher
+}
+
+Dep.prototype.addSub = function(watcher) {
+  this.subs.push(watcher)
+}
+Dep.prototype.notify = function() {
+  this.subs.forEach(watcher => {
+    watcher.update()
+  })
+}
+
+function Watcher(vm, exp, fn) {
+  this.vm = vm
+  this.exp = exp
+  this.fn = fn
+  Dep.target = this
+  let val = vm
+  let arr = exp.split('.')
+  arr.forEach(k => {
+    val = val[k]  // 获取时调用get方法
+  })
+  Dep.target = null
+}
+Watcher.prototype.update = function() {
+  let val = this.vm
+  let arr = this.exp.split('.')
+  arr.forEach(k => {
+    val = val[k]  // 获取时调用get方法
+  })
+  this.fn(val)
 }
