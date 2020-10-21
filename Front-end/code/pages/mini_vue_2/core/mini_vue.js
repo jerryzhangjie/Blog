@@ -111,10 +111,11 @@ function Compile(vm) {
 }
 
 // 发布订阅
+
+// 观察者中心
 function Dep() {
   this.subs = []  // 存放 watcher
 }
-
 Dep.prototype.addSub = function(watcher) {
   this.subs.push(watcher)
 }
@@ -124,6 +125,7 @@ Dep.prototype.notify = function() {
   })
 }
 
+// 观察者
 function Watcher(vm, exp, fn) {
   this.vm = vm
   this.exp = exp
