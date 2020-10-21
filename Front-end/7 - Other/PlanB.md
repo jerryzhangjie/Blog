@@ -1,5 +1,3 @@
-查缺补漏（9.8——9.20）
-
 1. 基础知识（html css js）
 
   * blog知识点
@@ -13,7 +11,7 @@
 3. 框架（Vue Vuex Vue-Router React Electron）
 
   * Vue 源码继续阅读，双向绑定、MVVM
-  * 了解一线React，eg.与Vue的diff算法区别
+  * 了解React，eg.与Vue的diff算法区别
 
 4. 工程化（几种模块化对比、webpack）
 
