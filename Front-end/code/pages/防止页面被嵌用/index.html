@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>防止 iframe 嵌用你的网页</title>
+    <title>防止别人通过 iframe 嵌用我的页面</title>
 </head>
 <body>
-    <p>1. 防止任何页面通过 iframe 嵌用你的网页</p>
+    <a href="../../index.html"><-返回首页</a><br><br>
+
+    <p>1. 防止任何页面(包括与我的域名相同的页面)通过 iframe 嵌用我的网页</p>
     <script type="text/javascript">
         if (window != top) {    // 判断当前的window对象是否是top对象
-            top.location.href = window.location.href    // 如果不是，将top对象的网址改为你的页面的网址(不仅不让你嵌入，还要让你的页面无法显示)
+            top.location.href = window.location.href    // 如果不是，将top对象的网址改为你的页面的网址(不仅不让别人嵌用，还要将别人的页面替换成我的页面)
         }
     </script>
 
-    <p>2. 防止第三方(与自己的域名不同)页面通过 iframe 嵌用你的网页</p>
+    <p>2. 防止第三方(与我的域名不同的页面)通过 iframe 嵌用你的网页</p>
     <script type="text/javascript">
         // 直观想法，判断域名是否一致
         // if (window.location.hostname != top.location.hostname) {
