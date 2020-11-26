@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Insert title here</title>
+</head>
+
+<body>
+    <div id="divId1"  style="width: 100%; height: 400px; background: red;">
+        <div id="img_wrap" style="position: fixed; z-index: -99;">
+            <img id="img" src=""/>
+        </div>
+        <button id="btn">复制</button>
+    </div>
+
+    <script>
+        var imgDom = document.querySelector('#img')
+        imgDom.src = 'http://ft.10jqka.com.cn/thsft/images/newEventDriven/banner.png'   // 服务端返回的图片地址
+        var btn = document.querySelector('#btn')
+        btn.addEventListener('click', function(e) {
+            var img = document.querySelector('#img_wrap')
+            if (window.getSelection) {
+                //chrome等主流浏览器
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNode(img);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            } else if (document.body.createTextRange) {
+                //ie
+                var range = document.body.createTextRange();
+                range.moveToElementText(img);
+                range.select();
+            }
+            document.execCommand('copy');
+            // copy之后清空选择区域
+            window.getSelection().removeAllRanges();
+        })
+    </script>
+</body>
+
+</html>
