@@ -223,14 +223,54 @@ function FindGreatestSumOfSubArray(array) {
   const dp = new Array()
   dp[0] = array[0]
   for (let i = 1; i < len; i++) {
-      dp[i] = Math.max(array[i], dp[i-1]+array[i])
-      total = Math.max(total, dp[i])
+    dp[i] = Math.max(array[i], dp[i - 1] + array[i])
+    total = Math.max(total, dp[i])
   }
   return total
 }
 
 /**
  * 2-7
- * 写一个函数，求两个整数之和，要求在函数体内不得使用+、-、*、/四则运算符号。
+ * 给出一颗二叉树，求树的最大深度
+ */
+
+// 分治法
+function TreeDepth(pRoot) {
+  if (!pRoot) return 0
+  let lDepth = TreeDepth(pRoot.left)
+  let rDepth = TreeDepth(pRoot.right)
+  return Math.max(lDepth, rDepth) + 1
+}
+
+/**
+ * 2-8
+ * 输入一棵二叉树，判断该二叉树是否是平衡二叉树。
+ * 平衡二叉树是左子树的高度与右子树的高度差的绝对值小于等于1，同样左子树、右子树也是平衡二叉树
+ */
+
+// 递归 - 自上而下  
+function IsBalanced_Solution(pRoot) {
+  let mp = {}
+  function depth(pRoot) {
+      if (!pRoot) return 0
+      if (mp[pRoot.val]) return mp[pRoot.val]
+      let lDepth = depth(pRoot.left)
+      let rDepth = depth(pRoot.right)
+      return mp[pRoot.val] = Math.max(lDepth, rDepth) + 1
+  }
+  function judge(pRoot) {
+      if (!pRoot) return true
+      let lDepth = pRoot.left ? mp[pRoot.left.val] : 0
+      let rDepth = pRoot.right ? mp[pRoot.right.val] : 0
+      return Math.abs(lDepth - rDepth) <= 1 && judge(pRoot.left) && judge(pRoot.right)
+  }
+  depth(pRoot)
+  return judge(pRoot)
+}
+
+/**
+ * 2-9
+ * 给定一棵二叉搜索树，请找出其中的第k小的结点
+ * 例如， （5，3，7，2，4，6，8）中，按结点数值大小顺序第三小结点的值为4。
  */
 
