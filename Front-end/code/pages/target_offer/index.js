@@ -274,3 +274,73 @@ function IsBalanced_Solution(pRoot) {
  * 例如， （5，3，7，2，4，6，8）中，按结点数值大小顺序第三小结点的值为4。
  */
 
+// 二叉树的中序遍历(不懂)
+
+/**
+ * 2-10
+ * 不用加减乘除做加法
+ */
+
+// 递归位运算，异或、位与 Add(1, 2)为例
+function Add(a, b) {
+  if (a === 0) return b
+  if (b === 0) return a
+  let newA = a ^ b // 异或实现加法(不进位)  11
+  let newB = (a & b) << 1  // 位与左移一位实现进位  000
+  return Add(newA, newB)
+}
+
+/**
+ * 2-11
+ * 给定一个长度为n的数组A，求数组B，B[i] = A[0]A[1]...A[i-1]*A[i+1]...A[n-1]。
+ * 要求不能使用除法。
+ */
+
+//  暴力求解
+function multiply(array) {
+  if (array == null || array.length === 0) {
+    return []
+  }
+  let res = []
+  let len = array.length
+  for (let i = 0; i < len; i++) {
+    let bi = 1
+    let filArr = array.filter((item, index) => index !== i)
+    filArr.map(val => { bi = bi * val})
+    res.push(bi)
+  }
+  return res
+}
+
+/**
+ * 3-1
+ * 跳台阶，一次跳1阶或2阶，问跳到第n阶总共多少种跳法
+ */
+
+// 递归
+function jumpFloor(number) {
+  if (number <= 1) return 1
+  return jumpFloor(number - 1) + jumpFloor(number - 2)
+}
+
+// 记忆化搜索
+function jumpFloor(number) {
+  const dp = new Array()
+  return jF(number, dp)
+}
+
+function jF(number, dp) {
+  if (number <= 1) return 1
+  if (dp[number] != undefined) return dp[number]
+  return dp[number] = jF(number - 1, dp) + jF(number - 2, dp)
+}
+
+// 动态规划
+function jumpFloor(number) {
+  const dp = new Array()
+  dp[1] = dp[0] = 1
+  for (let i = 2; i <= number; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2]
+  }
+  return dp[number]
+}
