@@ -36,7 +36,7 @@ event.target                      // 获取当前事件对象，事件代理中�
     });
     window.addEventListener('event_name', function(event){
         console.log('得到标题为：', event.detail.title);
-    });
+    }, true);   // false - 默认，冒泡   true - 捕获
     // 随后在对应的元素上执行该事件对象，从而触发事件
     if(window.dispatchEvent) {  
         window.dispatchEvent(myEvent);
@@ -64,3 +64,5 @@ body仅能通过 `document.querySelector('body').onscroll = function() { console
 `addEventListener`添加的无效
 
 什么原因？？？？
+
+scroll不会冒泡，addEventListener默认是冒泡的。

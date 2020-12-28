@@ -2,9 +2,9 @@
 
 ## 如何创建 BFC
 1. 根元素(`<html>`)；
-2. float值不为none；
-3. overflow值不为visible；
-4. position值不为static或者relative；
+2. position为绝对定位(absolute、fixed)；
+3. float值不为none；
+4. overflow值不为visible；
 5. display值不为inline、block。
 
 ## BFC 的布局规则

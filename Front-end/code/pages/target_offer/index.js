@@ -252,17 +252,17 @@ function TreeDepth(pRoot) {
 function IsBalanced_Solution(pRoot) {
   let mp = {}
   function depth(pRoot) {
-      if (!pRoot) return 0
-      if (mp[pRoot.val]) return mp[pRoot.val]
-      let lDepth = depth(pRoot.left)
-      let rDepth = depth(pRoot.right)
-      return mp[pRoot.val] = Math.max(lDepth, rDepth) + 1
+    if (!pRoot) return 0
+    if (mp[pRoot.val]) return mp[pRoot.val]
+    let lDepth = depth(pRoot.left)
+    let rDepth = depth(pRoot.right)
+    return mp[pRoot.val] = Math.max(lDepth, rDepth) + 1
   }
   function judge(pRoot) {
-      if (!pRoot) return true
-      let lDepth = pRoot.left ? mp[pRoot.left.val] : 0
-      let rDepth = pRoot.right ? mp[pRoot.right.val] : 0
-      return Math.abs(lDepth - rDepth) <= 1 && judge(pRoot.left) && judge(pRoot.right)
+    if (!pRoot) return true
+    let lDepth = pRoot.left ? mp[pRoot.left.val] : 0
+    let rDepth = pRoot.right ? mp[pRoot.right.val] : 0
+    return Math.abs(lDepth - rDepth) <= 1 && judge(pRoot.left) && judge(pRoot.right)
   }
   depth(pRoot)
   return judge(pRoot)
@@ -306,7 +306,7 @@ function multiply(array) {
   for (let i = 0; i < len; i++) {
     let bi = 1
     let filArr = array.filter((item, index) => index !== i)
-    filArr.map(val => { bi = bi * val})
+    filArr.map(val => { bi = bi * val })
     res.push(bi)
   }
   return res
@@ -344,3 +344,30 @@ function jumpFloor(number) {
   }
   return dp[number]
 }
+
+/**
+ * 3-2
+ * 二进制中1的个数
+ */
+
+
+
+/**
+ * 3-3
+ * 一个整型数组里除了两个数字之外，其他的数字都出现了两次。请写程序找出这两个只出现一次的数字。
+ */
+
+// 遍历
+function FindNumsAppearOnce(array) {
+  let list = []
+  array.forEach((item, index) => {
+    let i = list.indexOf(item)
+    if (i === -1) {
+      list.push(item)
+    } else {
+      list.splice(i, 1)
+    }
+  })
+  return list
+}
+
