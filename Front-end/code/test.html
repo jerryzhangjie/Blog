@@ -1,15 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
+
 <body>
-  <div>
-    <div style="float: left;">LEFT</div>
-    <div style="overflow: hidden;">RIGHT</div>
-</div>
+    <div>
+
+    </div>
+    <script>
+        let article = 'aaa bbb ccc aaa bbb aaa ccc aaa'
+        findMostWord(article)
+        function findMostWord(article) {      // article = 'asa vrf swa fgds'
+            let wordList = article.match(/[a-z]+/g) // wordList = [asa, vrf, swa, fgds]
+            article = ' ' + wordList.join(' ') + ' '
+            let visitList = []
+            let mostNum = 0
+            let mostWord = ''
+            wordList = [...new Set(wordList)]
+            wordList.forEach(item => {
+                if (!visitList.includes(item)) {
+                    visitList.push(item)
+                    let reg = new RegExp(' ' + item + ' ', 'g')
+                    let itemNum = article.match(reg).length
+                    if (itemNum > mostNum) {
+                        mostNum = itemNum
+                        mostWord = item
+                    }
+                }
+            })
+            console.log(mostWord + ': ' + mostNum)
+        }
+
+        // 计时器纠正偏差
+        let interval = 1000
+        let startTime = new Date().getTime()
+        let count = 0
+        // setTimeout(myInterval, interval)
+        function myInterval() {
+            let nextTime = ''
+            let nowTime = new Date().getTime()
+            let offset = 0
+            count += 1
+            offset = nowTime - (startTime + count * interval)
+            nextTime = interval - offset
+            if (nextTime < 0) {
+                nextTime = 0
+            }
+            console.log(nextTime)
+            setTimeout(myInterval, nextTime)
+        }
+
+        function bibao() {
+            let i = 0
+            return function () {
+                i += 1
+                console.log(i)
+            }
+        }
+
+        let aaa = bibao()
+        setInterval(aaa, 1000)
+
+
+        function addEvent(element, event, handler) {
+            if (element.addEventListener) {
+                element.addEventListener(event, handler, false)
+            } else if (element.attachEvent) {
+                element.attachEvent('on' + event, handler)
+            } else {
+                element['on' + event] = handler
+            }
+        }
+
+        function removeEvent(element, event, handler) {
+            if (element.removeEventListener) {
+                element.removeEventListener(event, handler, false)
+            } else if (element.attachEvent) {
+                element.detachEvent('on' + event, handler)
+            } else {
+                element['on' + event] = null
+            }
+        }
+
+
+        
+    </script>
 </body>
+
 </html>
