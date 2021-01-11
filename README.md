@@ -54,6 +54,14 @@
 
 
 
+## Node.js
+
+[1. Node.js 基础](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/3%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%8E%AF%E5%A2%83/Nodejs/%E5%9F%BA%E7%A1%80.md)
+
+[2. Nodejs开发仿知乎服务端深入理解RESTful API](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/3%20-%20%E5%B7%A5%E5%85%B7%E4%B8%8E%E7%8E%AF%E5%A2%83/Nodejs/Nodejs%E5%BC%80%E5%8F%91%E4%BB%BF%E7%9F%A5%E4%B9%8E%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3RESTful%20API.md)
+
+
+
 ## 设计模式
 
 [前端开发中用得到上的设计模式](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/1%20-%20%E7%90%86%E8%AE%BA%E4%B8%8E%E6%A8%A1%E5%BC%8F/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E4%B8%AD%E7%94%A8%E5%BE%97%E4%B8%8A%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.md)
