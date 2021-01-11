@@ -1,7 +1,3 @@
-https://www.jianshu.com/p/570a84ca7a30
-
-https://www.jianshu.com/p/251235dd04c8
-
 ## MVVM
 
 在MVVM架构模式中，
@@ -89,3 +85,7 @@ https://www.jianshu.com/p/251235dd04c8
                 })
             }
         }
+
+*参考*：        
+* https://www.jianshu.com/p/570a84ca7a30
+* https://www.jianshu.com/p/251235dd04c8
