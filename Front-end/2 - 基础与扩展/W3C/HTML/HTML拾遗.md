@@ -131,3 +131,12 @@
           <p><code>const foo = 'hello';</code></p>
           <figcaption>JavaScript 代码示例</figcaption>
         </figure>
+
+## 什么是语义化
+
+H5 新增了很多语义化标签，用正确的标签做正确的事，就是语义化。
+
+语义化的好处：
+
+1. 有助于阅读源码；
+2. 有助于爬虫解析页面内容(SEO)。
