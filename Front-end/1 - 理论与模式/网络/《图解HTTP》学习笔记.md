@@ -159,7 +159,7 @@ b. 浏览器中预先内嵌了证书颁发机构的公钥。
 
    * 缓存方式：1.0 用 Expires、Last-Modified、If-Modified-Since；1.1使用 Cache-Control、Etag、If-None-Match。[详见http缓存机制](https://github.com/jerryzhangjie/Blog/blob/master/Front-end/1%20-%20%E7%90%86%E8%AE%BA%E4%B8%8E%E6%A8%A1%E5%BC%8F/%E7%BD%91%E7%BB%9C/HTTP%E7%BC%93%E5%AD%98%E6%9C%BA%E5%88%B6.md)
    * 请求体优化：HTTP1.1则在请求头引入了range头域，它允许只请求资源的某个部分
-   * 长连接：1.0中每个请求都要进行tcp连接，而1.1中引入长连接（keep-alive：true 默认开启），建立一个tcp连接通道后，一定时间（可通过设置nginx或apache服务器实现）内可以发送多次http请求。注：长连接实现的是一次连接可发送多个请求，但这个“多个”是串型的，而我们从浏览器network中看到的同域名请求最多同时发送6个http请求，是浏览器开启了多个网络线程（每个线程都建立一个tcp连接）实现的，并非http1.1实现了并行。
+   * 长连接：1.0中每个请求都要进行tcp连接，而1.1中引入长连接（Connection: keep-alive 默认开启，可通过设置nginx或apache服务器实现），建立一个tcp连接通道后，一定时间内可以发送多次http请求。注：长连接实现的是一次连接可发送多个请求，但这个“多个”是串行的，而我们从浏览器network中看到的同域名请求最多同时发送6个http请求，是浏览器开启了多个网络线程（每个线程都建立一个tcp连接）实现的，并非http1.1实现了并行，也就是说第7个请求有可能与第1个请求用的是同一个连接(二者串行关系)，但第1个和第2个很可能是两个不同的连接(分属于两个网络线程)。
 
 ## http2与http1.x区别
 
@@ -192,6 +192,10 @@ GET 和 POST 是 HTTP 的两种请求方式，HTTP 是基于 TCP/IP 的应用层
 * HTTP方法的幂等性是指一次和多次请求某一个资源应该具有同样的副作用。
 * POST和PUT的区别容易被简单地误认为“POST表示创建资源，PUT表示更新资源”；而实际上，二者均可用于创建资源，更为本质的差别是在幂等性方面。
 * POST所对应的URI并非创建的资源本身，而是资源的接收者。比如：POST http://www.forum.com/articles的语义是在http://www.forum.com/articles下创建一篇帖子，HTTP响应中应包含帖子的创建状态以及帖子的URI。两次相同的POST请求会在服务器端创建两份资源，它们具有不同的URI；所以，POST方法不具备幂等性。而PUT所对应的URI是要创建或更新的资源本身。比如：PUT http://www.forum/articles/4231的语义是创建或更新ID为4231的帖子。对同一URI进行多次PUT的副作用和一次PUT是相同的；因此，PUT方法具有幂等性。
+
+## 常见 http 报文解析
+
+![http报文.jpg](https://raw.githubusercontent.com/jerryzhangjie/image-database/master/picgo/http%E6%8A%A5%E6%96%87.jpg)
 
 
 *参考*：
